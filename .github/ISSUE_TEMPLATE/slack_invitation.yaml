@@ -3,7 +3,7 @@ description: 슬랙 초대를 위한 이슈 템플릿입니다.
 title: "[슬랙]: "
 labels: ["slack"]
 assignees:
-  - 0147taehyun
+  - 0417taehyun
 body:
   - type: markdown
     attributes:
