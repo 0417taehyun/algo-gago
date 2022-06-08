@@ -1,0 +1,25 @@
+name: 슬랙 초대 신청
+description: 슬랙 초대를 위한 이슈 템플릿입니다.
+title: "[슬랙]: "
+labels: ["slack"]
+assignees:
+  - 0147taehyun
+body:
+  - type: markdown
+    attributes:
+      value: 원활한 슬랙 초대를 위해 아래 양식을 채워주시기 바랍니다.
+  - type: input
+    id: contact
+    attributes:
+      label: 슬랙 계정 이메일
+      description: 슬랙 초대를 위한 이메일을 입력해주세요.
+      placeholder: ex. email@example.com
+    validations:
+      required: true
+  - type: textarea
+    id: extra-contents
+    attributes:
+      label: 기타 문의사항
+      description: 기타 문의하고 싶은 사항이 있다면 작성해주세요.
+    validations:
+      required: false
