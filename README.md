@@ -119,7 +119,9 @@ git commit -m "[ LeetCode : 이태현 ] 11. Container With Most Water"
     <td> 🚶 </td>
     <td> 2022. 06. 22. - 2022. 08. 21.  </td>
     <td> 
-        <a href="https://github.com/0417taehyun">이태현</a>
+        <a href="https://github.com/kanghw7730">강현우</a>,
+        <a href="https://github.com/0417taehyun">이태현</a>,
+        <a href="https://github.com/hgene0929">이현진</a>
     </td>
 </tr>
 </table>

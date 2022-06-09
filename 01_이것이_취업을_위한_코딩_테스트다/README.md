@@ -16,7 +16,9 @@
         <a href="https://github.com/0417taehyun">이태현</a>
     </td>
     <td> 
-        <a href="https://github.com/0417taehyun">이태현</a>
+        <a href="https://github.com/kanghw7730">강현우</a>,
+        <a href="https://github.com/0417taehyun">이태현</a>,
+        <a href="https://github.com/hgene0929">이현진</a>
     </td>    
 </tr>
 <tr align="left">
@@ -97,6 +99,8 @@
 
 <table>
 <tr>
-    <td align="center"><a href="https://github.com/0417taehyun"><img src="https://avatars.githubusercontent.com/u/63915557?v=4" width="100px;" alt=""/><br /><sub><b>이태현</b></sub></a></td>
-  </tr>
+    <td align="center"><a href="https://github.com/kanghw7730"><img src="https://avatars.githubusercontent.com/u/91079748?v=4" width="100px;" alt=""/><br /><sub><b>강현우</b></sub></a></td>
+    <td align="center"><a href="https://github.com/0417taehyun"><img src="https://avatars.githubusercontent.com/u/63915557?v=4" width="100px;" alt=""/><br /><sub><b>이태현</b></sub></a></td>       
+    <td align="center"><a href="https://github.com/hgene0929"><img src="https://avatars.githubusercontent.com/u/90823532?v=4" width="100px;" alt=""/><br /><sub><b>이현진</b></sub></a></td> 
+</tr>
 </table>
