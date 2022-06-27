@@ -101,9 +101,12 @@ if __name__ == "__main__":
     <td> 2주차: 구현 </td>
     <td> 2022. 07. 03. SUN. 19:00 - 22:00  </td>
     <td> 
+        <a href="https://github.com/hgene0929">이현진</a>  
     </td>
-    <td> 
-        <a href="https://github.com/0417taehyun">이태현</a>
+    <td>
+        <a href="https://github.com/kanghw7730">강현우</a>,     
+        <a href="https://github.com/0417taehyun">이태현</a>,
+        <a href="https://github.com/hgene0929">이현진</a>        
     </td>    
 </tr>
 <tr align="left">
