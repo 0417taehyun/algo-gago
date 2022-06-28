@@ -1,0 +1,37 @@
+def solution() -> None:
+    N: int = int(input())
+    plan: list[str] = list(input().split())
+    
+    start: list[int] = [1, 1]
+    for move in plan:
+        if move == 'R':
+            if start[1] == N:
+                pass
+            else:
+                start[1] += 1
+        
+        elif move == 'L':
+            if start[1] == 1:
+                pass
+            else:
+                start[1] -= 1
+        
+        elif move == 'U':
+            if start[0] == 1:
+                pass
+            else:
+                start[0] -= 1
+        
+        elif move == 'D':
+            if start[0] == N:
+                pass
+            else:
+                start[0] += 1
+    
+    print(" ".join([ str(point) for point in start ]))
+
+
+if __name__ == "__main__":
+    
+    
+    solution()
