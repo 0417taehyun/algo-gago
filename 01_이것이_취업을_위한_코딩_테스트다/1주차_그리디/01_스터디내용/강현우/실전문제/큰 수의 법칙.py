@@ -6,4 +6,5 @@ array.sort()
 MostLarge = array[n-1]
 SecondLarge = array[n-2]
 
-for i in range()
+for i in range(): 
+    
