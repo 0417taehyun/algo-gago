@@ -32,6 +32,17 @@ def solution() -> None:
 
 
 if __name__ == "__main__":
+    from io import StringIO
+    from unittest.mock import patch
     
     
-    solution()
+    def test_example_case() -> None:
+        with patch("builtins.input", side_effect=["5", "R R R U D D"]):
+            with patch("sys.stdout", new_callable=StringIO) as test_stdout:
+                solution()
+                
+            assert test_stdout.getvalue() == "3 4\n"
+    
+    
+    test_example_case()
+    
