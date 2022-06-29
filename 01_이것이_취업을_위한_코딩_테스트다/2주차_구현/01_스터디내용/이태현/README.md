@@ -153,25 +153,120 @@ print(answer)
 
 #### 접근법
 
+처음에 상하좌우 모두 두 칸씩 움직이고 그 다음에는 상하로 움직인 경우 좌우 한 칸, 좌우로 움직인 경우 상하 한 칸을 움직이게 된다.
+
+결국 딱 한번의 움직임에 대한 이동 가능여부를 구하면 되기 때문에 상하좌우로 두 칸씩 이동 가능한 경우인지 먼저 조건을 따지고 이후 그곳에서 한 칸 이동 가능한 경우인지 조건을 따지면 된다.
+
 #### 소스코드
 
 ```Python
+point: str = input()
 
+answer: int = 0
+moves = ['U', 'R', 'D', 'L']
+for move in moves:
+    if move == 'U':
+        if int(point[1]) > 2:
+            if (point[0] != 'a') and (point[0] != 'h'):
+                answer += 2
+            else:
+                answer += 1
+
+    elif move == 'R':
+        if point[0] < 'g':
+            if (int(point[1]) != 1) and (int(point[1]) != 8):
+                answer += 2
+            else:
+                answer += 1
+
+    elif move == 'D':
+        if int(point[1]) < 7:
+            if (point[0] != 'a') and (point[0] != 'h'):
+                answer += 2
+            else:
+                answer += 1
+
+    elif move == 'L':
+        if point[0] > 'b':
+            if (int(point[1]) != 1) and (int(point[1]) != 8):
+                answer += 2
+            else:
+                answer += 1
+
+print(answer)
 ```
 
 #### 시간 복잡도
+
+상하좌우 네 번에 대한 경우의 수만 구하면 되기 때문에 시간 복잡도는 상수 시간으로 O(4)이다. 내부적으로 조건문을 따지는 게 사실 반복문의 수보다 더 많이 들어서 해당 상수시간보다는 크지만 그렇게 유의미한 결과를 내지는 않을 것 같아 반복문으로만 따졌다.
+
+#### 기타
+
+조금 더 까다롭게 문제를 출제할 경우 입력 문자가 열과 행이 아닌 행과 열 형태로 들어왔을 경우에 대한 예외 처리를 요구할 수 있다고 적혀 있었다. 라이브 코딩으로 문제를 풀 경우 이러한 입력이 완전히 잘못된 경우에 대한 예외 케이스를 항상 생각해야겠다.
 
 ### 02. 게임 개발
 
 #### 접근법
 
+이런 문제의 경우 방문했던 곳에 대한 정보를 저장해두는 게 좋기 때문에 방문한 좌표를 저장할 2차원 배열을 선언한다.
+
+다음으로는 반복을 멈추게 되는 경우에 대한 조건을 확실히 판단하는 게 좋다.
+
+따라서 한 바퀴를 다 돌아서 뒤로 한칸 움직이려 할 때 해당 부분이 바다가 아니면 이미 가봤던 곳이더라도 이동할 수 있지만 만약 바다일 경우 반복문을 빠져 나와야 한다.
+
 #### 소스코드
 
 ```Python
+N, M = list(map(int, input().split()))
+x, y, direction = list(map(int, input().split()))
+map_info: list[list[int]] = [ list(map(int, input().split())) for _ in range(N) ]
+visited_info: list[list[int]] = [ [0] * M for _ in range(N) ]
 
+answer: int = 1
+visited_info[x][y] = 1
+
+circle: int = 0
+move_measures: list[tuple(int, int)] = [ (-1, 0), (0, 1), (1, 0), (0, -1) ]
+
+while True:
+    if circle == 4:
+        x_destination = x - move_measures[direction][0]
+        y_destination = y - move_measures[direction][1]
+
+        if map_info[x_destination][y_destination] == 1:
+            break
+
+        else:
+            circle = 0
+            x, y = x_destination, y_destination
+
+    else:
+        direction -= 1
+        if direction == -1:
+            direction = 3
+
+        x_destination = x + move_measures[direction][0]
+        y_destination = y + move_measures[direction][1]
+
+        if visited_info[x_destination][y_destination] == 0 and \
+            map_info[x_destination][y_destination] == 0:
+                circle = 0
+                visited_info[x_destination][y_destination] = 1
+
+                answer += 1
+                x, y = x_destination, y_destination
+
+        else:
+            circle += 1
+
+print(answer)
 ```
 
 #### 시간 복잡도
+
+이런 시뮬레이션 유형의 구현 문제는 시간 복잡도를 어떻게 구해야할지 감이 잘 안 온다.
+
+최악의 경우를 생각했을 때 주어진 N,M 크기에서 모든 가변을 제외하고 가운데를 전부 도는 경우라 생각되어 O((N-2) \* (M-2)) 정도로 예측했는데 정확한 측정 방법인지 잘 모르겠다.
 
 ## 기출문제
 
