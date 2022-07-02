@@ -8,7 +8,7 @@
 - [예제](#예제)
   - [4-1. 상하좌우](#4-1-상하좌우)
   - [4-2. 시각](#4-2-시각)
-- [실전문제](#실전문제
+- [실전문제](#실전문제)
   - [01. 왕실의 나이트](#01-왕실의-나이트)
   - [02. 게임 개발](#02-게임-개발)
 - [기출문제](#기출문제)
@@ -20,7 +20,6 @@
   - [06. 기둥과 보 설치](#06-기둥과-보-설치)
   - [07. 치킨 배달](#07-치킨-배달)
   - [08. 외벽 점검](#08-외벽-점검)
-
 
 ## 개념
 
@@ -387,19 +386,19 @@ for jump_idx in range(1, (len(s) // 2) + 1):
 
         if target_string == previous_string:
             count += 1
-        
+
         else:
             result_string += previous_string
             if count != 1:
                 result_string += str(count)
-            
+
             count = 1
             previous_string = target_string
-    
+
     result_string += previous_string
     if count != 1:
         result_string += str(count)
-    
+
     if answer > len(result_string):
         answer = len(result_string)
 
@@ -453,7 +452,7 @@ def solution(key: list[list[int]], lock: list[list[int]]) -> bool:
     for i in range(N):
         for j in range(N):
             new_lock[M-1+i][M-1+j] = lock[i][j]
-    
+
     answer: bool = False
     for _ in range(4):
         for x in range((M-1)+N):
@@ -464,7 +463,7 @@ def solution(key: list[list[int]], lock: list[list[int]]) -> bool:
 
                 if validate_lock(M, N, new_lock):
                     return True
-                
+
                 else:
                     for i in range(M):
                         for j in range(M):
@@ -523,7 +522,7 @@ def rotate_270(array: list[list[int]]) -> list[list[int]]:
         for j in range(y_length):
             temp[i][j] = array[y_length-1-j][i]
 
-    return temp    
+    return temp
 ```
 
 ### 05. 뱀
@@ -566,7 +565,7 @@ while True:
     if (x_destination > (N-1)) or (y_destination > (N-1)) or \
         (x_destination < 0) or (y_destination < 0):
         break
-    
+
     elif (x_destination, y_destination) in visited_info:
         break
 
@@ -618,49 +617,49 @@ def validate_structure(answer: list[list[int]]) -> bool:
         if structure == 0:
             if y == 0:
                 pass
-            
+
             elif [x, y-1, 0] in answer:
                 pass
-            
+
             elif [x-1, y, 1] in answer:
                 pass
-            
+
             elif [x, y, 1] in answer:
                 pass
-            
+
             else:
                 return False
-            
+
         else:
             if [x, y-1, 0] in answer:
                 pass
-            
+
             elif [x+1, y-1, 0] in answer:
                 pass
-            
+
             elif ([x-1, y, 1] in answer) and ([x+1, y, 1] in answer):
                 pass
-            
+
             else:
                 return False
-    
+
     return True
 
 
 def solution(n: int, build_frame: list[list[int]]) -> list[list[int]]:
     answer: list[list[int]] = []
-    
+
     for x, y, structure, work in build_frame:
         if work == 0:
             answer.remove([x, y, structure])
             if not validate_structure(answer):
                 answer.append([x, y, structure])
-        
+
         else:
             answer.append([x, y, structure])
             if not validate_structure(answer):
                 answer.remove([x, y, structure])
-    
+
     return sorted(answer)
 ```
 
