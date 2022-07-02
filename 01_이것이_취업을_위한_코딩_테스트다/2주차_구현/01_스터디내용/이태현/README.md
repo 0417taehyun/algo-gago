@@ -1,8 +1,26 @@
 # 구현(Implementation)
 
+> 아래 내용은 [[ 알고리즘 ] 이것이 취업을 위한 코딩 테스트다 with 파이썬 : 구현](https://velog.io/@dev_taehyun/algorithm-this-is-coding-test-for-employment-implementation) 글을 통해서도 확인 가능합니다.
+
 ## 목차
 
 - [개념](#개념)
+- [예제](#예제)
+  - [4-1. 상하좌우](#4-1-상하좌우)
+  - [4-2. 시각](#4-2-시각)
+- [실전문제](#실전문제
+  - [01. 왕실의 나이트](#01-왕실의-나이트)
+  - [02. 게임 개발](#02-게임-개발)
+- [기출문제](#기출문제)
+  - [01. 럭키스트레이트](#01-럭키-스트레이트)
+  - [02. 문자열 재정렬](#02-문자열-재정렬)
+  - [03. 문자열 압축](#03-문자열-압축)
+  - [04. 자물쇠와 열쇠](#04-자물쇠와-열쇠)
+  - [05. 뱀](#05-뱀)
+  - [06. 기둥과 보 설치](#06-기둥과-보-설치)
+  - [07. 치킨 배달](#07-치킨-배달)
+  - [08. 외벽 점검](#08-외벽-점검)
+
 
 ## 개념
 
@@ -30,9 +48,9 @@
 
 간단하게 주어진 이동 계획의 길이 만큼 반복문을 수행하면서 조건문을 통해 만약 좌표의 끝점에 존재할 경우 별다른 움직임을 보이징 않고 그렇지 않은 경우 해당 움직임에 맞게 움직여주면 된다.
 
-#### 소스코드
+#### 소스 코드
 
-> 소스코드는 [01. 상하좌우.py](./01_%EC%98%88%EC%A0%9C/01.%20%EC%83%81%ED%95%98%EC%A2%8C%EC%9A%B0.py) 파일에서 확인 가능하다.
+> 소스 코드는 [01. 상하좌우.py](./01_예제/01.%20상하좌우.py) 파일에서 확인 가능하다.
 
 ```Python
 N: int = int(input())
@@ -83,9 +101,9 @@ print(" ".join([ str(point) for point in start ]))
 
 각각의 조합을 구한 다음에 시와 분, 시와 초, 그리고 분과 초가 중복되는 경우의 수를 빼주고 최종적으로 시와 분과 초가 모두 중복되는 경우의 수를 더해주면 된다.
 
-#### 소스코드
+#### 소스 코드
 
-> 소스코드는 [02. 시각.py](./01_%EC%98%88%EC%A0%9C/02.%20%EC%8B%9C%EA%B0%81.py) 파일에서 확인 가능하다.
+> 소스 코드는 [02. 시각.py](./01_예제/02.%20시각.py) 파일에서 확인 가능하다.
 
 ```Python
 N: int = int(input())
@@ -157,7 +175,9 @@ print(answer)
 
 결국 딱 한번의 움직임에 대한 이동 가능여부를 구하면 되기 때문에 상하좌우로 두 칸씩 이동 가능한 경우인지 먼저 조건을 따지고 이후 그곳에서 한 칸 이동 가능한 경우인지 조건을 따지면 된다.
 
-#### 소스코드
+#### 소스 코드
+
+> 소스 코드는 [01. 왕실의 나이트.py](./02_실전%20문제/01.%20왕실의%20나이트.py) 파일에서 확인 가능하다.
 
 ```Python
 point: str = input()
@@ -214,7 +234,9 @@ print(answer)
 
 따라서 한 바퀴를 다 돌아서 뒤로 한칸 움직이려 할 때 해당 부분이 바다가 아니면 이미 가봤던 곳이더라도 이동할 수 있지만 만약 바다일 경우 반복문을 빠져 나와야 한다.
 
-#### 소스코드
+#### 소스 코드
+
+> 소스 코드는 [02. 게임 개발.py](./02_실전%20문제/02.%20게임%20개발.py) 파일에서 확인 가능하다.
 
 ```Python
 N, M = list(map(int, input().split()))
@@ -272,12 +294,400 @@ print(answer)
 
 ### 01. 럭키 스트레이트
 
+#### 접근법
+
+좌측과 우측을 나누어 각각 합하고 그 결괏값을 비교하면 된다.
+
+#### 소스 코드
+
+> 소스 코드는 [01. 럭키 스트레이트.py](./03_알고리즘%20유형별%20기출문제/01.%20럭키%20스트레이트.py) 파일에서 확인 가능하다.
+
+```Python
+N: list[int] = [ int(number) for number in input() ]
+
+left_sum: int = 0
+right_sum: int = 0
+for idx in range(len(N) // 2):
+    left_sum += N[idx]
+    right_sum += N[len(N) - idx - 1]
+
+if left_sum == right_sum:
+    print("LUCKY")
+
+else:
+    print("READY")
+```
+
+#### 시간 복잡도
+
+주어진 N의 길이의 절반 만큼만 반복문을 작동하면 되기 때문에 시간 복잡도는 결국 O(N/2)이다.
+
+그런데 상수 등은 전부 제외하니까 단순하게 O(N)으로 생각해도 될 것 같다.
+
 ### 02. 문자열 재정렬
+
+#### 접근법
+
+반복문을 문자열 S의 길이 N만큼 작동하며 `isnumeric()` 내장함수를 통해 만약 숫자일 경우 누적합을 구하고 아닐 경우 문자이기 때문에 새로운 문자에 이어 붙인다.
+
+이후 `sorted()` 내장함수를 사용하 문자열을 오름차순 정렬하고 그 뒤에 누적합을 `str()` 내장함수를 사용해 문자열로 변경하여 이어 붙이면 된다.
+
+이때 유의할 점은 `sorted()` 내장함수의 반환 자료형이 리스트이기 때문에 `join()` 내장함수를 사용하여 그 반환값을 문자열로 만들어줘야 한다는 것이다.
+
+#### 소스 코드
+
+> 소스 코드는 [02. 문자열 재정렬.py](./03_알고리즘%20유형별%20기출문제/02.%20문자열%20재정렬.py) 파일에서 확인 가능하다.
+
+```Python
+S: str = input()
+
+only_characters: str = ""
+cumulative_number: int = 0
+for character in S:
+    if character.isnumeric():
+        cumulative_number += int(character)
+
+    else:
+        only_characters += character
+
+answer = "".join(sorted(only_characters)) + str(cumulative_number)
+print(answer)
+```
+
+#### 시간 복잡도
+
+`sorted()` 내장함수의 시간 복잡도가 O(NlogN)이기 때문에 결국 시간 복잡도는 O(NlogN)이다.
 
 ### 03. 문자열 압축
 
+#### 접근법
+
+처음에는 그리디를 풀듯 접근했다. 그래서 첫 문자와 동일한 문자를 만나기 바로 직전까지로 생각했었는데 이 경우 `"aababa"` 같은 테스트 케이스를 통과하지 못한다.
+
+그래서 단순히 완전 탐색으로 문자열 길이의 절반까지 반복문을 돌며 내부에 중첩 반복문으로 문자열 길이의 절반 이하까지의 정수를 `range()` 내장함수의 건너뛰기 값으로 사용했다.
+
+이때 이전 문자열과 현재 문자열이 같은 경우 개수를 늘리고 다른 경우 새로운 문자열이 등장한 것이기 때문에 이전 문자열과 함께 그 개수가 2 이상이면 문자열에 함께 더해준다.
+
+마지막에 남은 문자열과 그 개수가 2 이상이면 더해주고 이때 그 길이가 이전 압축에 대한 길이보다 작을 경우 그것을 사용하여 가장 작은 값을 반환하면 된다.
+
+#### 소스 코드
+
+> 소스 코드는 [03. 문자열 압축.py](./03_알고리즘%20유형별%20기출문제/03.%20문자열%20압축.py) 파일에서 확인 가능하다.
+
+```Python
+s: str = input()
+
+answer: int = len(s)
+for jump_idx in range(1, (len(s) // 2) + 1):
+    count: int = 0
+    result_string: str = ""
+    previous_string: str = s[:jump_idx]
+    for idx in range(0, len(s), jump_idx):
+        target_string: str = s[idx:idx+jump_idx]
+
+        if target_string == previous_string:
+            count += 1
+        
+        else:
+            result_string += previous_string
+            if count != 1:
+                result_string += str(count)
+            
+            count = 1
+            previous_string = target_string
+    
+    result_string += previous_string
+    if count != 1:
+        result_string += str(count)
+    
+    if answer > len(result_string):
+        answer = len(result_string)
+
+print(answer)
+```
+
+#### 시간 복잡도
+
+시간 복잡도는 O(N^2)이다.
+
 ### 04. 자물쇠와 열쇠
+
+#### 접근법
+
+기본적으로 `key[M-1][M-1]` 요소의 값과 `lock[0][0]` 값을 비교하면서 반복문을 수행해야 하기 때문에 상하좌우에 `M-1`개 만큼의 배열이 추가된 새로운 자물쇠 배열을 만들어서 문제를 풀 수 있다.
+
+이렇게 새로운 배열이 만들어졌을 때 서로 다른 크기의 2차원 배열에 대한 비교를 어떻게 반복문을 통해 가능할지 구현하는데 쉽지 않았으며 추가로 최종적으로 자물쇠가 전부 요구사항에 맞게 열렸는지 확인할 때 돌기와 돌기가 만난 경우에 대한 처리를 해주지 못해서 몇 개의 테스트 케이스를 통과하지 못했었다.
+
+2차원 배열을 90도로 회전할 때 기존 `array[x][y]` 값은 `array[y][length-1-x]` 와 같다는 공식을 잊지 말아야겠다.
+
+#### 소스 코드
+
+> 소스 코드는 [04. 자물쇠와 열쇠.py](./03_알고리즘%20유형별%20기출문제/04.%20자물쇠와%20열쇠.py) 파일에서 확인 가능하다.
+
+```Python
+def validate_lock(M: int, N: int, new_lock: list[list[int]]) -> bool:
+    for i in range(N):
+        for j in range(N):
+            if new_lock[M-1+i][M-1+j] != 1:
+                return False
+
+    return True
+
+
+def rotate(key: list[list[int]]) -> list[list[int]]:
+    temp: list[list[int]] = [ [0] * len(key) for _ in range(len(key)) ]
+    for i in range(len(key)):
+        for j in range(len(key)):
+            temp[i][j] = key[j][len(key)-1-i]
+
+    return temp
+
+
+def solution(key: list[list[int]], lock: list[list[int]]) -> bool:
+    M: int = len(key)
+    N: int = len(lock)
+    new_lock: list[list[int]] = [
+        [0] * ((M-1)*2+N) for _ in range((M-1)*2+N)
+    ]
+
+    for i in range(N):
+        for j in range(N):
+            new_lock[M-1+i][M-1+j] = lock[i][j]
+    
+    answer: bool = False
+    for _ in range(4):
+        for x in range((M-1)+N):
+            for y in range((M-1)+N):
+                for i in range(M):
+                    for j in range(M):
+                        new_lock[x+i][y+j] += key[i][j]
+
+                if validate_lock(M, N, new_lock):
+                    return True
+                
+                else:
+                    for i in range(M):
+                        for j in range(M):
+                            new_lock[x+i][y+j] -= key[i][j]
+
+        key = rotate(key)
+
+    return answer
+```
+
+#### 시간 복잡도
+
+시간 복잡도를 구하는 게 조금 무의미한 문제라 생각은 되는데 M은 무조건 N보다 작거나 같기 때문에 최악의 경우 M과 N의 크기가 같을 때 반복문이 총 4번 중첩되기 때문에 시간 복잡도는 O(N^4)이라 할 수 있다.
+
+#### 기타
+
+2차원 배열을 각각 90도, 180도, 270도를 회전하는 함수는 각각 아래와 같다.
+
+```Python
+def rotate_90(array: list[list[int]]) -> list[list[int]]:
+    x_length: int = len(array)
+    y_length: int = len(array[0])
+
+    temp: list[list] = [
+        [0] * x_length for _ in range(y_length)
+    ]
+    for i in range(x_length):
+        for j in range(y_length):
+            temp[i][j] = array[j][x_length-1-i]
+
+    return temp
+
+
+def rotate_180(array: list[list[int]]) -> list[list[int]]:
+    x_length: int = len(array)
+    y_length: int = len(array[0])
+
+    temp: list[list] = [
+        [0] * x_length for _ in range(y_length)
+    ]
+    for i in range(x_length):
+        for j in range(y_length):
+            temp[i][j] = array[x_length-1-i][y_length-1-j]
+
+    return temp
+
+
+def rotate_270(array: list[list[int]]) -> list[list[int]]:
+    x_length: int = len(array)
+    y_length: int = len(array[0])
+
+    temp: list[list] = [
+        [0] * x_length for _ in range(y_length)
+    ]
+    for i in range(x_length):
+        for j in range(y_length):
+            temp[i][j] = array[y_length-1-j][i]
+
+    return temp    
+```
 
 ### 05. 뱀
 
+#### 접근법
+
+이전에 풀었던 [게임 개발](#02-게임-개발) 문제와 유사하다.
+
+방문한 위치에 대한 정보를 저장하는 배열을 만들고 현재 위치 정보를 계속 저장해나가는데 만약 목표 위치에 사과가 있을 경우 배열에 가장 처음 들어왔던 정보부터 제거하면 된다.
+
+#### 소스 코드
+
+> 소스 코드는 [05. 뱀.py](./03_알고리즘%20유형별%20기출문제/05.%20뱀.py) 파일에서 확인 가능하다.
+
+```Python
+N: int = int(input())
+map_info: list[int] = [ [0] * N for _ in range(N) ]
+for _ in range(int(input())):
+    x, y = list(map(int, input().split()))
+    map_info[x-1][y-1] += 1
+
+move_info: dict[int, str] = {}
+for _ in range(int(input())):
+    time, direction = input().split()
+    move_info[int(time)] = direction
+
+visited_info: list = []
+moved_measure: list[tuple(int, int)] = [ (0, 1), (1, 0), (0, -1), (-1, 0) ]
+
+current_x: int = 0
+current_y: int = 0
+current_direction: int = 0
+
+answer: int = 0
+while True:
+    answer += 1
+    x_destination = current_x + moved_measure[current_direction][0]
+    y_destination = current_y + moved_measure[current_direction][1]
+
+    if (x_destination > (N-1)) or (y_destination > (N-1)) or \
+        (x_destination < 0) or (y_destination < 0):
+        break
+    
+    elif (x_destination, y_destination) in visited_info:
+        break
+
+    else:
+        visited_info.append((current_x, current_y))
+        current_x, current_y = x_destination, y_destination
+
+        if map_info[x_destination][y_destination] == 1:
+            map_info[x_destination][y_destination] = 0
+
+        else:
+            visited_info.pop(0)
+
+    if answer in move_info.keys():
+        if move_info[answer] == 'L':
+            current_direction -= 1
+            if current_direction == -1:
+                current_direction = 3
+
+        else:
+            current_direction += 1
+            if current_direction == 4:
+                current_direction = 0
+
+print(answer)
+```
+
+#### 시간 복잡도
+
+최악의 경우 보드의 크기인 N을 전부 다 도는 경우이기 때문에 시간 복잡도는 O(N^2)이다.
+
 ### 06. 기둥과 보 설치
+
+#### 접근법
+
+처음에 전체 좌표가 존재하는 2차원 배열을 만들고 기둥과 보를 설치할 때마다 각 구조에 맞게 해당 배열에 값을 입력했다.
+
+이때 `validate_strucutre` 라는 함수를 따로 만들어 해당 기둥과 보를 설치 가능한지, 혹은 삭제 가능한지 확인했는데 이때 문제는 전체 구조가 유효한지 여부를 판단한 것이 아닌 해당 설치 또는 삭제의 대상이 되는 기둥과 보의 설치 이후 좌표에 대한 부분만 유효성 검사를 진행했다는 점이다.
+
+그래서 문제를 해결하지 못해서 정답을 확인한 결과 전체 배열에 대한 유효성 검사를 진행하는 게 접근 방법이었다.
+
+#### 소스 코드
+
+> 소스 코드는 [06. 기둥과 보 설치.py](./03_알고리즘%20유형별%20기출문제/06.%20기둥과%20보%20설치.py) 파일에서 확인 가능하다.
+
+```Python
+def validate_structure(answer: list[list[int]]) -> bool:
+    for x, y, structure in answer:
+        if structure == 0:
+            if y == 0:
+                pass
+            
+            elif [x, y-1, 0] in answer:
+                pass
+            
+            elif [x-1, y, 1] in answer:
+                pass
+            
+            elif [x, y, 1] in answer:
+                pass
+            
+            else:
+                return False
+            
+        else:
+            if [x, y-1, 0] in answer:
+                pass
+            
+            elif [x+1, y-1, 0] in answer:
+                pass
+            
+            elif ([x-1, y, 1] in answer) and ([x+1, y, 1] in answer):
+                pass
+            
+            else:
+                return False
+    
+    return True
+
+
+def solution(n: int, build_frame: list[list[int]]) -> list[list[int]]:
+    answer: list[list[int]] = []
+    
+    for x, y, structure, work in build_frame:
+        if work == 0:
+            answer.remove([x, y, structure])
+            if not validate_structure(answer):
+                answer.append([x, y, structure])
+        
+        else:
+            answer.append([x, y, structure])
+            if not validate_structure(answer):
+                answer.remove([x, y, structure])
+    
+    return sorted(answer)
+```
+
+#### 시간 복잡도
+
+시간 복잡도의 경우 주어진 배열의 크기인 N만큼 -내부 유효성 검사에서의 `in` 연산을 포함하여- 총 세 번의 반복문을 수행해야 하기 때문에 O(N^3)이다.
+
+### 07. 치킨 배달
+
+#### 접근법
+
+#### 소스 코드
+
+```Python
+
+```
+
+#### 시간 복잡도
+
+### 08. 외벽 점검
+
+#### 접근법
+
+#### 소스 코드
+
+```Python
+
+```
+
+#### 시간 복잡도
