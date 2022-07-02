@@ -106,7 +106,7 @@ git commit -m "[ LeetCode : 이태현 ] 11. Container With Most Water"
 </tr>
 <tr align="center">
     <td> <a href="./01_이것이_취업을_위한_코딩_테스트다/README.md"> <이것이 취업을 위한 코딩 테스트다> </a> </td>
-    <td> 🚶 </td>
+    <td> 🏃 </td>
     <td> 2022. 06. 22. - 2022. 08. 21.  </td>
     <td> 
         <a href="https://github.com/kanghw7730">강현우</a>,
@@ -135,3 +135,7 @@ git commit -m "[ LeetCode : 이태현 ] 11. Container With Most Water"
 #### 2022. 06. 24. FRI
 
 - 브랜치 부분 삭제 및 포크(Fork)에 대한 설명 추가 (작성자: 이태현)
+
+#### 2022. 07. 03. SUM
+
+- <이것이 취업을 위한 코딩 테스트다> 스터디 진행 상태 🏃(진행 중)으로 변경 (작성자: 이태현)
