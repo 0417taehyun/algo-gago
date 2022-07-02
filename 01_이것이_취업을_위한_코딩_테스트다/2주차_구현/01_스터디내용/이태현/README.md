@@ -1,5 +1,7 @@
 # 구현(Implementation)
 
+> 아래 내용은 [[ 알고리즘 ] 이것이 취업을 위한 코딩 테스트다 with 파이썬 : 구현](https://velog.io/@dev_taehyun/algorithm-this-is-coding-test-for-employment-implementation) 글을 통해서도 확인 가능합니다.
+
 ## 목차
 
 - [개념](#개념)
