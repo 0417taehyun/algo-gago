@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
 본인의 접근법에 따른 결과를 확인하고 통과하지 못한 케이스가 있으면 어디에서 문제가 발생한 것인지 파악합니다. 이후 본인의 풀이를 다른 스터디원과 공유합니다. 이때 문제를 끝내 풀지 못하더라도 본인의 접근법과 함께 타인의 풀이를 비교하여 해당 문제를 해결할 수 있는 방법을 정리해둡니다.
 
-이렇게 문제풀이가 마무리되면 당일 학습한 내용을 정리하여 블로깅합니다. 예를 들어 [[ 알고리즘 ] 백준 11399번: ATM](https://velog.io/@dev_taehyun/algorithm-baekjoon-11399-ATM) 글과 같습니다.
+이렇게 문제풀이가 마무리되면 당일 학습한 내용을 정리하여 블로깅합니다. 예를 들어 [[ 알고리즘 ] 이것이 취업을 위한 코딩 테스트다 with 파이썬 : 그리디](https://velog.io/@dev_taehyun/algorithm-this-is-coding-test-for-employment-greedy) 글과 같습니다.
 
 ### 학습 내용 :memo:
 
@@ -101,9 +101,12 @@ if __name__ == "__main__":
     <td> 2주차: 구현 </td>
     <td> 2022. 07. 03. SUN. 19:00 - 22:00  </td>
     <td> 
+        <a href="https://github.com/hgene0929">이현진</a>  
     </td>
-    <td> 
-        <a href="https://github.com/0417taehyun">이태현</a>
+    <td>
+        <a href="https://github.com/kanghw7730">강현우</a>,     
+        <a href="https://github.com/0417taehyun">이태현</a>,
+        <a href="https://github.com/hgene0929">이현진</a>        
     </td>    
 </tr>
 <tr align="left">
