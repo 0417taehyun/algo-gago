@@ -671,13 +671,65 @@ def solution(n: int, build_frame: list[list[int]]) -> list[list[int]]:
 
 #### 접근법
 
+치킨 집의 좌표가 전부 저장되어 있는 배열에서 M개를 선택하는 조합을 구한 뒤 모든 조합의 경우의 수에 대한 집들의 치킨 거리를 구하여 가장 작은 값들만 선택해서 합하면 해당 조합에 대한 도시의 치킨 거리가 된다.
+
+이후 각 조합에 대한 도시의 치킨 거리 값들 중에서 가장 작은 값을 선택하면 된다
+
 #### 소스 코드
 
-```Python
+처음에 M개를 선택하는 조합으로 생각하지 않고 1개부터 최대 M개까지의 조합으로 생각해서 문제를 풀었는데 문제에서 *가장 수익을 많이 낼 수 있는 치킨집의 개수는 최대 M개라는 사실* 을 알아내었기 때문에 *최대 M개를 골랐을 때, 도시의 치킨 거리의 최솟값을 출력* 하는 게 요구사항이었다. 다시 말해 1개부터 M개까지의 모든 조합을 구하지 않더라도 M개의 조합만 구하면 되는 문제였다.
 
+이때 조합의 경우 내장 모듈 `itertools` 에서 `combinations` 함수를 활용했다. 반대로 중복된 조합의 경우 `permutations` 함수를 사용하면 된다.
+
+```Python
+from itertools import combinations
+
+def calculate_distance(
+    N: int, chickens: list[tuple[int, int]], houses: list[tuple[int, int]]
+) -> int:
+    cumulative_distance: int = 0
+    for hx, hy in houses:
+        minimum_distance: int = 2*2*(N-1)*N
+        for cx, cy in chickens:
+            current_distance: int = abs(hx - cx) + abs(hy - cy)
+            if minimum_distance > current_distance:
+                minimum_distance = current_distance
+
+        cumulative_distance += minimum_distance
+
+    return cumulative_distance
+
+
+from itertools import combinations
+
+
+N, M = map(int, input().split())
+
+houses, chickens = [], []
+for i in range(N):
+    map_info: list[int] = list(map(int, input().split()))
+    for j in range(N):
+        if map_info[j] == 1:
+            houses.append((i, j))
+        
+        elif map_info[j] == 2:
+            chickens.append((i, j))
+
+answer: int = 2*2*N*(N-1)
+target_chickens: list[tuple(int, int)] = combinations(chickens, M)
+for target_chicken in target_chickens:
+    current_distance: int = calculate_distance(
+        N=N, chickens=target_chicken, houses=houses
+    )
+    if answer > current_distance:
+        answer = current_distance
+
+print(answer)
 ```
 
 #### 시간 복잡도
+
+대략적으로 시간 복잡도는 O(N^3)이다. 
 
 ### 08. 외벽 점검
 
