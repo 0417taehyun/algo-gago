@@ -16,7 +16,7 @@ DFS와 BFS
            자료구조는 주로 프로그램이 실행되는 동안 메모리에 있는 데이터를 다룸 
 
         a. 스택(stack): FILO(First In Last Out: 선입후출) -> .append(): 추가하는 기능, .pop(): 제거하는 기능
-        b. 큐(queue): FIFO(First In First Out: 선입선출{악몽}) -> deque(): 이것이 핵심. que라는 것이 웨이팅(인벤토리)라고 생각한다면. de-que:웨이팅에서 빼낸다. 즉, 먼저 웨이팅 한 데이터를 que에서 빼낸다는 뜻.
+        b. 큐(queue): FIFO(First In First Out: 선입선출{악몽}) -> deque(): 이것이 핵심. queue라는 것이 웨이팅(인벤토리)라고 생각한다면. de-que:웨이팅에서 빼낸다. 즉, 먼저 웨이팅 한 데이터를 que에서 빼낸다는 뜻.
 
     3. 재귀함수: for문도 하나의 재귀이다. 
 
